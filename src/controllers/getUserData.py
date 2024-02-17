@@ -4,9 +4,9 @@ from src.models.user import User, users_schema
 
 getUserData = Blueprint('getUserData', __name__)
 
-   
-
 @getUserData.route('/get-user-data')
 def get_user_data():
     users = User.query.all()
+    # User.query.delete()
+    # db.session.commit()
     return users_schema.dump(users)

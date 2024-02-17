@@ -15,8 +15,13 @@ def initDB():
 
 @saveUserData.route('/save-user-data', methods=['POST'])
 def user_data():
-    initDB()
-    user = User(name = 'sasa', lastName = 'Zelen', email = 'lalala', picture = 'll', userType = 'Personal', isAuth = 'hoho')
-    db.session.add(user)
-    db.session.commit()
-    return "user created"
+    data = request.get_json()
+    try:
+        initDB()
+        user = User(name = data['name'], lastName = data['lastName'], email = data['email'], picture = data['picture'], userType = data['userType'], isAuth = data['isAuth'])
+        db.session.add(user)
+        db.session.commit()
+        return "user created"
+    except Exception as e:
+        print(e)
+        return "User not created", e 

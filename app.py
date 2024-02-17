@@ -3,10 +3,12 @@ from flask import Flask
 from src.controllers.getUserData import getUserData
 from src.controllers.saveUserData import saveUserData
 from src.config.config import db
+from flask_cors import CORS
 
 def create_app():
     app = Flask(__name__) 
-    app.config.from_object('src.config.config')  
+    app.config.from_object('src.config.config') 
+    CORS(app)
 
     db.init_app(app)  
     return app

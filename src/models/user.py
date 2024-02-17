@@ -1,9 +1,6 @@
-from flask_sqlalchemy import SQLAlchemy
-
-db = SQLAlchemy()
+from src.config.config import db, ma
 
 class User(db.Model):
-    '''Data for ON/OFF should be dumped in this table.'''
 
     __tablename__ = 'user'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -16,4 +13,13 @@ class User(db.Model):
 
     # method used to represent a class's objects as a string
     def __repr__(self):
-        return '<machineid %r>' % self.name
+        return self.name
+    
+class UserSchema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        model = User
+        load_instance = True
+        sqla_session = db.session
+
+user_schema = UserSchema()
+users_schema = UserSchema(many=True)

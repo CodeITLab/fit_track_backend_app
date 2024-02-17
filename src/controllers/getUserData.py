@@ -1,7 +1,7 @@
 from flask import Blueprint
 
-user = Blueprint('user', __name__)
+getUserData = Blueprint('getUserData', __name__)
 
-@user.route('/user')
+@getUserData.route('/get-user-data')
 def user_data():
     return "This is user data: {name: lala}"

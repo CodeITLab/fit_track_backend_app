@@ -4,6 +4,7 @@ from src.controllers.getUserData import getUserData
 from src.controllers.saveUserData import saveUserData
 from src.config.config import db
 from flask_cors import CORS
+from flask_jwt_extended import JWTManager
 
 def create_app():
     app = Flask(__name__) 

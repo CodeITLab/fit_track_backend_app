@@ -20,4 +20,4 @@ app.register_blueprint(getUserData)
 app.register_blueprint(saveUserData)
 
 if __name__ == '__main__':  # Running the app
-    app.run(host='127.0.0.0', port=5000, debug=True)
+   app.run(host='127.0.0.0', port=5000, debug=True)

@@ -1,5 +1,5 @@
 echo "[ `date` ]": "create venv"
-py -m venv .venv
+python3 -m venv .venv
 echo "[ `date` ]": "activate venv"
 .venv/Scripts/activate
 echo "[ `date` ]": "installing the requirements" 

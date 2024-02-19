@@ -30,6 +30,7 @@ def user_data():
         }, "KISCHASASCHAKIKI1234@")
         response = make_response(jsonify({ 'token': token, "message: ": "Saved successfully." }), 200)
         response.headers['Authorization'] = token
+        response.set_cookie(key='CookieMonsta', value=token, httponly=True, expires=datetime.utcnow() + timedelta(minutes=1))
         return response, 200
     except Exception as e:
         print(e)

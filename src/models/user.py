@@ -23,3 +23,23 @@ class UserSchema(ma.SQLAlchemyAutoSchema):
 
 user_schema = UserSchema()
 users_schema = UserSchema(many=True)
+
+class Workouts(db.Model):
+
+    __tablename__ = 'workouts'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    workoutName = db.Column(db.String(40), primary_key=False)
+    # exerciseData = db.relationship('Exercises', backref='workout', lazy="joined")
+
+        # method used to represent a class's objects as a string
+    def __repr__(self):
+        return self.workoutName
+
+class WorkoutsSchema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        model = Workouts
+        load_instance = True
+        sqla_session = db.session
+
+workout_schema = WorkoutsSchema()
+workouts_schema = WorkoutsSchema(many=True)

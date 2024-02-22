@@ -11,13 +11,13 @@ public class Workout {
     private long id;
 
     @Column(name = "workout_name")
-    private String workoutName;
+    private String name;
 
     public Workout() {}
 
-    public Workout(long id, String workoutName) {
+    public Workout(long id, String name) {
         this.id = id;
-        this.workoutName = workoutName;
+        this.name = name;
     }
 
     public long getId() {
@@ -28,19 +28,19 @@ public class Workout {
         this.id = id;
     }
 
-    public String getWorkoutName() {
-        return workoutName;
+    public String getName() {
+        return name;
     }
 
-    public void setWorkoutName(String workoutName) {
-        this.workoutName = workoutName;
+    public void setName(String workoutName) {
+        this.name = workoutName;
     }
 
     @Override
     public String toString() {
         return "Workout{" +
                 "id=" + id +
-                ", workoutName='" + workoutName + '\'' +
+                ", workoutName='" + name + '\'' +
                 '}';
     }
 }

@@ -10,7 +10,7 @@ public class Workout {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column(name = "workout_name")
+    @Column(name = "name")
     private String name;
 
     public Workout() {}

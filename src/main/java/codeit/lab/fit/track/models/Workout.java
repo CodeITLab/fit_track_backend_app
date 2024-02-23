@@ -2,6 +2,8 @@ package codeit.lab.fit.track.models;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "workouts")
 public class Workout {
@@ -12,6 +14,9 @@ public class Workout {
 
     @Column(name = "name")
     private String name;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "workout", cascade = CascadeType.ALL)
+    private List<Exercises> exercisesData;
 
     public Workout() {}
 
@@ -36,11 +41,20 @@ public class Workout {
         this.name = workoutName;
     }
 
+    public List<Exercises> getExercisesData() {
+        return exercisesData;
+    }
+
+    public void setExercisesData(List<Exercises> exercisesList) {
+        this.exercisesData = exercisesList;
+    }
+
     @Override
     public String toString() {
         return "Workout{" +
                 "id=" + id +
-                ", workoutName='" + name + '\'' +
+                ", name='" + name + '\'' +
+                ", exercisesList=" + exercisesData +
                 '}';
     }
 }

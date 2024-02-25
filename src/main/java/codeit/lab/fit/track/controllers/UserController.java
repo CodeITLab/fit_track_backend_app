@@ -18,9 +18,9 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("get-user-data")
-    public ResponseEntity<List<User>> getUserData() {
+    public ResponseEntity<User> getUserData(@RequestParam Long id) {
         try {
-            List<User> users = userService.findAll();
+            User users = userService.findAll(id);
             return new ResponseEntity<>(users, HttpStatus.OK);
         } catch (Exception error) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -29,7 +29,7 @@ public class UserController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("save-user-data")
-    public User saveUserData(@RequestBody User user) {
+    public ResponseEntity<Long> saveUserData(@RequestBody User user) {
         return userService.saveUser(user);
     }
 

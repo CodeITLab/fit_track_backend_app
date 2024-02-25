@@ -28,9 +28,9 @@ public class WorkoutController {
         }
     }
 
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.OK)
     @PostMapping("save-workout-data")
-    public Workout saveWorkoutData(@RequestBody Workout workout) {
+    public ResponseEntity<String> saveWorkoutData(@RequestBody Workout workout) {
         return workoutService.saveWorkout(workout);
     }
 }

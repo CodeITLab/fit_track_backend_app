@@ -1,6 +1,7 @@
 package codeit.lab.fit.track.models;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -29,9 +30,6 @@ public class User {
     @Column(name = "user_type")
     private String userType;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Workout> workoutData;
-
     public User() {
 
     }
@@ -44,14 +42,6 @@ public class User {
         this.picture = picture;
         this.isAuth = isAuth;
         this.userType = userType;
-    }
-
-    public List<Workout> getWorkoutData() {
-        return workoutData;
-    }
-
-    public void setWorkoutData(List<Workout> workoutData) {
-        this.workoutData = workoutData;
     }
 
     public long getId() {
@@ -94,20 +84,20 @@ public class User {
         this.picture = picture;
     }
 
-    public String getAuth() {
-        return isAuth;
-    }
-
-    public void setAuth(String auth) {
-        isAuth = auth;
-    }
-
     public String getUserType() {
         return userType;
     }
 
     public void setUserType(String userType) {
         this.userType = userType;
+    }
+
+    public String getIsAuth() {
+        return isAuth;
+    }
+
+    public void setIsAuth(String isAuth) {
+        this.isAuth = isAuth;
     }
 
     @Override
@@ -118,9 +108,8 @@ public class User {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", picture='" + picture + '\'' +
-                ", isAuth=" + isAuth +
+                ", isAuth='" + isAuth + '\'' +
                 ", userType='" + userType + '\'' +
-                ", workoutData=" + workoutData +
                 '}';
     }
 

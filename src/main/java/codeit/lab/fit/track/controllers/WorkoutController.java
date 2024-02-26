@@ -28,6 +28,17 @@ public class WorkoutController {
         }
     }
 
+    @GetMapping("get-users-workouts")
+    public ResponseEntity<List<Workout>> getWorkoutForLoggedInUser(@RequestParam Long id) {
+        try {
+            List<Workout> usersWorkouts = workoutService.findUsersWorkout(id);
+            return new ResponseEntity<>(usersWorkouts, HttpStatus.OK);
+
+        } catch (Exception error) {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+    }
+
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("save-workout-data")
     public ResponseEntity<String> saveWorkoutData(@RequestBody Workout workout) {

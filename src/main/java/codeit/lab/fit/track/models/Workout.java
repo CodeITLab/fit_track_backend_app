@@ -1,11 +1,13 @@
 package codeit.lab.fit.track.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "workouts")
+@Table(name = "workout")
 public class Workout {
 
     @Id
@@ -15,19 +17,21 @@ public class Workout {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "workout", cascade = CascadeType.ALL)
-    private List<Exercises> exercisesData;
+    @Column(name = "owner")
+    private Long workoutOwner;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
-    private User user;
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "workout_id")
+    private List<Exercises> exercisesData = new ArrayList<Exercises>();
 
-    public Workout() {}
-
-    public Workout(long id, String name) {
+    public Workout(long id, String name, Long workoutOwner, List<Exercises> exercisesData) {
         this.id = id;
         this.name = name;
+        this.workoutOwner = workoutOwner;
+        this.exercisesData = exercisesData;
     }
+
+    public Workout() {}
 
     public long getId() {
         return id;
@@ -53,12 +57,21 @@ public class Workout {
         this.exercisesData = exercisesList;
     }
 
+    public Long getWorkoutOwner() {
+        return workoutOwner;
+    }
+
+    public void setWorkoutOwner(Long workoutOwner) {
+        this.workoutOwner = workoutOwner;
+    }
+
     @Override
     public String toString() {
         return "Workout{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", exercisesList=" + exercisesData +
+                ", workoutOwner='" + workoutOwner + '\'' +
+                ", exercisesData=" + exercisesData +
                 '}';
     }
 }

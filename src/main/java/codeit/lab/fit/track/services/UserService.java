@@ -18,7 +18,7 @@ public class UserService {
 
     public User findAll(Long id) {
         return userRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("User not found with id " + id));
+                .orElseThrow(() -> new EntityNotFoundException("User not found."));
     }
 
     public ResponseEntity<Long> saveUser(User user) {

@@ -24,7 +24,7 @@ public class User {
     private String picture;
 
     @Column(name = "is_auth")
-    private Boolean isAuth;
+    private String isAuth;
 
     @Column(name = "user_type")
     private String userType;
@@ -32,19 +32,11 @@ public class User {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
     private List<Workout> workoutData;
 
-    public List<Workout> getWorkoutData() {
-        return workoutData;
-    }
-
-    public void setWorkoutData(List<Workout> workoutData) {
-        this.workoutData = workoutData;
-    }
-
     public User() {
 
     }
 
-    public User(long id, String name, String lastName, String email, String picture, Boolean isAuth, String userType) {
+    public User(long id, String name, String lastName, String email, String picture, String isAuth, String userType) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
@@ -52,6 +44,14 @@ public class User {
         this.picture = picture;
         this.isAuth = isAuth;
         this.userType = userType;
+    }
+
+    public List<Workout> getWorkoutData() {
+        return workoutData;
+    }
+
+    public void setWorkoutData(List<Workout> workoutData) {
+        this.workoutData = workoutData;
     }
 
     public long getId() {
@@ -94,11 +94,11 @@ public class User {
         this.picture = picture;
     }
 
-    public Boolean getAuth() {
+    public String getAuth() {
         return isAuth;
     }
 
-    public void setAuth(Boolean auth) {
+    public void setAuth(String auth) {
         isAuth = auth;
     }
 

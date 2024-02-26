@@ -1,6 +1,8 @@
 package codeit.lab.fit.track.models;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -26,6 +28,17 @@ public class User {
 
     @Column(name = "user_type")
     private String userType;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Workout> workoutData;
+
+    public List<Workout> getWorkoutData() {
+        return workoutData;
+    }
+
+    public void setWorkoutData(List<Workout> workoutData) {
+        this.workoutData = workoutData;
+    }
 
     public User() {
 
@@ -107,6 +120,8 @@ public class User {
                 ", picture='" + picture + '\'' +
                 ", isAuth=" + isAuth +
                 ", userType='" + userType + '\'' +
+                ", workoutData=" + workoutData +
                 '}';
     }
+
 }

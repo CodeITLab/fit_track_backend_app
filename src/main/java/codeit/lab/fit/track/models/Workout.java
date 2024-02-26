@@ -18,6 +18,10 @@ public class Workout {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "workout", cascade = CascadeType.ALL)
     private List<Exercises> exercisesData;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private User user;
+
     public Workout() {}
 
     public Workout(long id, String name) {

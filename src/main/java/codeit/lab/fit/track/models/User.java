@@ -29,9 +29,6 @@ public class User {
     @Column(name = "user_type")
     private String userType;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Workout> workoutData;
-
     public User() {
 
     }
@@ -44,14 +41,6 @@ public class User {
         this.picture = picture;
         this.isAuth = isAuth;
         this.userType = userType;
-    }
-
-    public List<Workout> getWorkoutData() {
-        return workoutData;
-    }
-
-    public void setWorkoutData(List<Workout> workoutData) {
-        this.workoutData = workoutData;
     }
 
     public long getId() {
@@ -120,7 +109,6 @@ public class User {
                 ", picture='" + picture + '\'' +
                 ", isAuth=" + isAuth +
                 ", userType='" + userType + '\'' +
-                ", workoutData=" + workoutData +
                 '}';
     }
 

@@ -1,5 +1,6 @@
 package codeit.lab.fit.track.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -22,16 +23,17 @@ public class Exercises {
     @Column(name = "is_workout_finished")
     private Boolean isWorkoutFinished;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "workout_id")
+    @ManyToOne
+    @JsonIgnore
     private Workout workout;
 
-    public Exercises(long id, String name, Integer sets, Integer reps, Boolean isWorkoutFinished) {
+    public Exercises(long id, String name, Integer sets, Integer reps, Boolean isWorkoutFinished, Workout workout) {
         this.id = id;
         this.name = name;
         this.sets = sets;
         this.reps = reps;
         this.isWorkoutFinished = isWorkoutFinished;
+        this.workout = workout;
     }
 
     public Exercises() {

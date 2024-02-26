@@ -1,11 +1,13 @@
 package codeit.lab.fit.track.models;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.OnDelete;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "workouts")
+@Table(name = "workout")
 public class Workout {
 
     @Id
@@ -15,19 +17,21 @@ public class Workout {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "workout", cascade = CascadeType.ALL)
-    private List<Exercises> exercisesData;
+    @OneToMany(
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    @JoinColumn(name = "workout_id")
+    private List<Exercises> exercisesData = new ArrayList<Exercises>();
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    public Workout() {}
-
-    public Workout(long id, String name) {
+    public Workout(long id, String name, List<Exercises> exercisesData) {
         this.id = id;
         this.name = name;
+        this.exercisesData = exercisesData;
     }
+
+    public Workout() {}
 
     public long getId() {
         return id;

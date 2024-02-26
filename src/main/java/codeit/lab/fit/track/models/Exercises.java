@@ -21,7 +21,7 @@ public class Exercises {
     private Integer reps;
 
     @Column(name = "is_workout_finished")
-    private Boolean isWorkoutFinished;
+    private boolean isWorkoutFinished;
 
     @ManyToOne
     @JsonIgnore
@@ -72,11 +72,11 @@ public class Exercises {
         this.reps = reps;
     }
 
-    public Boolean getWorkoutFinished() {
+    public boolean getWorkoutFinished() {
         return isWorkoutFinished;
     }
 
-    public void setWorkoutFinished(Boolean workoutFinished) {
+    public void setWorkoutFinished(boolean workoutFinished) {
         isWorkoutFinished = workoutFinished;
     }
 

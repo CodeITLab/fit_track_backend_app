@@ -23,7 +23,7 @@ public class UserController {
             User users = userService.findAll(id);
             return new ResponseEntity<>(users, HttpStatus.OK);
         } catch (Exception error) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
 

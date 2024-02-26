@@ -4,7 +4,6 @@ import codeit.lab.fit.track.models.Workout;
 import codeit.lab.fit.track.repositories.WorkoutRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +17,10 @@ public class WorkoutService {
 
     public List<Workout> findAll() {
         return workoutRepository.findAll();
+    }
+
+    public List<Workout> findUsersWorkout(Long id) {
+        return workoutRepository.findByWorkoutOwner(id);
     }
 
     public ResponseEntity<String> saveWorkout(Workout workout) {

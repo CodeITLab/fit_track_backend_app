@@ -1,6 +1,7 @@
 package codeit.lab.fit.track.models;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -83,20 +84,20 @@ public class User {
         this.picture = picture;
     }
 
-    public String getAuth() {
-        return isAuth;
-    }
-
-    public void setAuth(String auth) {
-        isAuth = auth;
-    }
-
     public String getUserType() {
         return userType;
     }
 
     public void setUserType(String userType) {
         this.userType = userType;
+    }
+
+    public String getIsAuth() {
+        return isAuth;
+    }
+
+    public void setIsAuth(String isAuth) {
+        this.isAuth = isAuth;
     }
 
     @Override
@@ -107,7 +108,7 @@ public class User {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", picture='" + picture + '\'' +
-                ", isAuth=" + isAuth +
+                ", isAuth='" + isAuth + '\'' +
                 ", userType='" + userType + '\'' +
                 '}';
     }

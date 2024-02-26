@@ -1,7 +1,7 @@
 package codeit.lab.fit.track.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import org.hibernate.annotations.OnDelete;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,17 +17,17 @@ public class Workout {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(
-            fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
-    )
+    @Column(name = "owner")
+    private Long workoutOwner;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "workout_id")
     private List<Exercises> exercisesData = new ArrayList<Exercises>();
 
-    public Workout(long id, String name, List<Exercises> exercisesData) {
+    public Workout(long id, String name, Long workoutOwner, List<Exercises> exercisesData) {
         this.id = id;
         this.name = name;
+        this.workoutOwner = workoutOwner;
         this.exercisesData = exercisesData;
     }
 
@@ -57,12 +57,21 @@ public class Workout {
         this.exercisesData = exercisesList;
     }
 
+    public Long getWorkoutOwner() {
+        return workoutOwner;
+    }
+
+    public void setWorkoutOwner(Long workoutOwner) {
+        this.workoutOwner = workoutOwner;
+    }
+
     @Override
     public String toString() {
         return "Workout{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", exercisesList=" + exercisesData +
+                ", workoutOwner='" + workoutOwner + '\'' +
+                ", exercisesData=" + exercisesData +
                 '}';
     }
 }

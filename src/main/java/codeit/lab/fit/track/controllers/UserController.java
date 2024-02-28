@@ -17,11 +17,31 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @GetMapping("get-all-users")
+    public ResponseEntity<List<User>> getAllUsers() {
+        try {
+            List<User> allUsers = userService.findAllUsers();
+            return new ResponseEntity<>(allUsers, HttpStatus.OK);
+        } catch (Exception error) {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+    }
+
     @GetMapping("get-user-data")
     public ResponseEntity<User> getUserData(@RequestParam Long id) {
         try {
             User users = userService.findAll(id);
             return new ResponseEntity<>(users, HttpStatus.OK);
+        } catch (Exception error) {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @GetMapping("get-users-by-name")
+    public ResponseEntity<List<User>> getUsersByNamePattern(@RequestParam String namePattern) {
+        try {
+            List<User> getListOfUsers = userService.findUsersByNamePattern(namePattern);
+            return new ResponseEntity<>(getListOfUsers, HttpStatus.OK);
         } catch (Exception error) {
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }

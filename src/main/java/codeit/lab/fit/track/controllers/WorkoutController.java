@@ -1,6 +1,5 @@
 package codeit.lab.fit.track.controllers;
 
-import codeit.lab.fit.track.models.User;
 import codeit.lab.fit.track.models.Workout;
 import codeit.lab.fit.track.services.WorkoutService;
 import org.springframework.beans.factory.annotation.Autowired;

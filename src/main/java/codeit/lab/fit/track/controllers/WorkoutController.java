@@ -43,4 +43,6 @@ public class WorkoutController {
     public ResponseEntity<String> saveWorkoutData(@RequestBody Workout workout) {
         return workoutService.saveWorkout(workout);
     }
+
+
 }

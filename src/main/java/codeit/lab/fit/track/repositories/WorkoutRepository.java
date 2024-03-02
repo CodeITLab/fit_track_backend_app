@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface WorkoutRepository extends JpaRepository<Workout, Long> {
     List<Workout> findByWorkoutOwner(Long id);
+
+    Workout deleteWorkoutById(Long id);
 }

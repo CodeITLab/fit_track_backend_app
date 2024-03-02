@@ -47,6 +47,18 @@ public class UserController {
         }
     }
 
+    @GetMapping("get-user-by-email")
+    public ResponseEntity<User> getUserByEmail(@RequestParam String email) {
+        try {
+            User userByEmail = userService.findUserByEmail(email);
+
+            return new ResponseEntity<>(userByEmail, HttpStatus.OK);
+        } catch (Exception error) {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+
+    }
+
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("save-user-data")
     public ResponseEntity<Long> saveUserData(@RequestBody User user) {

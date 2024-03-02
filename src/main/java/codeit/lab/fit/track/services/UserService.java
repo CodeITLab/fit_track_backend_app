@@ -30,6 +30,10 @@ public class UserService {
         return userRepository.findByNameContainsIgnoreCase(namePattern);
     }
 
+    public User findUserByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
     public ResponseEntity<Long> saveUser(User user) {
         if (userRepository.findByEmail(user.getEmail()) != null) {
             User loggedInUser = userRepository.findByEmail(user.getEmail());

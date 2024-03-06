@@ -19,8 +19,8 @@ public class WorkoutService {
         return workoutRepository.findAll();
     }
 
-    public List<Workout> findUsersWorkout(Long id) {
-        return workoutRepository.findByWorkoutOwner(id);
+    public List<Workout> findUsersWorkout(String email) {
+        return workoutRepository.findByWorkoutOwner(email);
     }
 
     public ResponseEntity<String> saveWorkout(Workout workout) {

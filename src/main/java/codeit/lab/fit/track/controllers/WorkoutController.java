@@ -28,9 +28,9 @@ public class WorkoutController {
     }
 
     @GetMapping("get-users-workouts")
-    public ResponseEntity<List<Workout>> getWorkoutForLoggedInUser(@RequestParam Long id) {
+    public ResponseEntity<List<Workout>> getWorkoutForLoggedInUser(@RequestParam String email) {
         try {
-            List<Workout> usersWorkouts = workoutService.findUsersWorkout(id);
+            List<Workout> usersWorkouts = workoutService.findUsersWorkout(email);
             return new ResponseEntity<>(usersWorkouts, HttpStatus.OK);
 
         } catch (Exception error) {

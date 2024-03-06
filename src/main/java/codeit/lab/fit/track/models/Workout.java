@@ -18,13 +18,13 @@ public class Workout {
     private String name;
 
     @Column(name = "owner")
-    private Long workoutOwner;
+    private String workoutOwner;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "workout_id")
     private List<Exercises> exercisesData = new ArrayList<Exercises>();
 
-    public Workout(long id, String name, Long workoutOwner, List<Exercises> exercisesData) {
+    public Workout(long id, String name, String workoutOwner, List<Exercises> exercisesData) {
         this.id = id;
         this.name = name;
         this.workoutOwner = workoutOwner;
@@ -57,11 +57,11 @@ public class Workout {
         this.exercisesData = exercisesList;
     }
 
-    public Long getWorkoutOwner() {
+    public String getWorkoutOwner() {
         return workoutOwner;
     }
 
-    public void setWorkoutOwner(Long workoutOwner) {
+    public void setWorkoutOwner(String workoutOwner) {
         this.workoutOwner = workoutOwner;
     }
 

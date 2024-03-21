@@ -27,4 +27,9 @@ public class WorkoutService {
         workoutRepository.save(workout);
         return new ResponseEntity<>("OK", HttpStatus.CREATED);
     }
+
+    public ResponseEntity<String> updateWorkout(Workout workout) {
+        workoutRepository.save(workout);
+        return new ResponseEntity<>("Workout updated", HttpStatus.OK);
+    }
 }

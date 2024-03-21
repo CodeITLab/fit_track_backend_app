@@ -2,6 +2,7 @@ package codeit.lab.fit.track.services;
 
 import codeit.lab.fit.track.models.Workout;
 import codeit.lab.fit.track.repositories.WorkoutRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,5 +32,11 @@ public class WorkoutService {
     public ResponseEntity<String> updateWorkout(Workout workout) {
         workoutRepository.save(workout);
         return new ResponseEntity<>("Workout updated", HttpStatus.OK);
+    }
+
+    @Transactional
+    public ResponseEntity<String> deleteWorkout(Long id) {
+        workoutRepository.deleteWorkoutById(id);
+        return new ResponseEntity<>("Workout Deleted", HttpStatus.OK);
     }
 }

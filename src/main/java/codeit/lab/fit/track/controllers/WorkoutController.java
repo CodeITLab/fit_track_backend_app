@@ -50,4 +50,9 @@ public class WorkoutController {
         workout.setId(id);
         return workoutService.updateWorkout(workout);
     }
+
+    @DeleteMapping("delete-user-workout")
+    public ResponseEntity<String> deleteUserWorkout(@RequestParam Long id) {
+        return workoutService.deleteWorkout(id);
+    }
 }

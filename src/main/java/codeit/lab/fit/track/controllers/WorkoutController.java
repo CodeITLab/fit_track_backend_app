@@ -29,10 +29,10 @@ public class WorkoutController {
 
     @GetMapping("get-users-workouts")
     public ResponseEntity<List<Workout>> getWorkoutForLoggedInUser(@RequestParam String email) {
+    System.out.println(email);
         try {
             List<Workout> usersWorkouts = workoutService.findUsersWorkout(email);
             return new ResponseEntity<>(usersWorkouts, HttpStatus.OK);
-
         } catch (Exception error) {
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
@@ -41,6 +41,7 @@ public class WorkoutController {
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("save-workout-data")
     public ResponseEntity<String> saveWorkoutData(@RequestBody Workout workout) {
+        System.out.println(workout);
         return workoutService.saveWorkout(workout);
     }
 

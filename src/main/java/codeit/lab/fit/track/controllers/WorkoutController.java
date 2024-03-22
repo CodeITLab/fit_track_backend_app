@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:8081")
 @RestController
@@ -41,14 +42,12 @@ public class WorkoutController {
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("save-workout-data")
     public ResponseEntity<String> saveWorkoutData(@RequestBody Workout workout) {
-        System.out.println(workout);
         return workoutService.saveWorkout(workout);
     }
 
     @PutMapping("update-user-workout")
     public ResponseEntity<String> updateUserWorkout(@RequestParam Long id, @RequestBody Workout workout) {
-        workout.setId(id);
-        return workoutService.updateWorkout(workout);
+        return workoutService.updateWorkout(id, workout);
     }
 
     @DeleteMapping("delete-user-workout")

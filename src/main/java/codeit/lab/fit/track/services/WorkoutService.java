@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class WorkoutService {
@@ -29,9 +30,16 @@ public class WorkoutService {
         return new ResponseEntity<>("OK", HttpStatus.CREATED);
     }
 
-    public ResponseEntity<String> updateWorkout(Workout workout) {
-        workoutRepository.save(workout);
-        return new ResponseEntity<>("Workout updated", HttpStatus.OK);
+    public ResponseEntity<String> updateWorkout(Long id, Workout workout) {
+        Workout updatedWorkout = workoutRepository.findById(id).orElseThrow();
+
+        updatedWorkout.setName(workout.getName());
+        updatedWorkout.setWorkoutOwner(workout.getWorkoutOwner());
+        updatedWorkout.setExercisesData(workout.getExercisesData());
+
+        workoutRepository.save(updatedWorkout);
+
+        return new ResponseEntity<>("Workout created. ", HttpStatus.OK);
     }
 
     @Transactional

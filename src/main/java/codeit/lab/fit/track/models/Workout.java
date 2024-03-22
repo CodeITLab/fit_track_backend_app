@@ -20,7 +20,7 @@ public class Workout {
     @Column(name = "owner")
     private String workoutOwner;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "workout_id")
     private List<Exercises> exercisesData = new ArrayList<Exercises>();
 

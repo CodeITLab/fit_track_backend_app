@@ -20,6 +20,9 @@ public class Exercises {
     @Column(name = "reps")
     private Integer reps;
 
+    @Column(name = "weight")
+    private Integer weight;
+
     @Column(name = "is_workout_finished")
     private boolean isWorkoutFinished;
 
@@ -27,12 +30,13 @@ public class Exercises {
     @JsonIgnore
     private Workout workout;
 
-    public Exercises(long id, String name, Integer sets, Integer reps, Boolean isWorkoutFinished, Workout workout) {
+    public Exercises(long id, String name, Integer sets, Integer reps, Boolean isWorkoutFinished, Integer weight, Workout workout) {
         this.id = id;
         this.name = name;
         this.sets = sets;
         this.reps = reps;
         this.isWorkoutFinished = isWorkoutFinished;
+        this.weight = weight;
         this.workout = workout;
     }
 
@@ -88,6 +92,15 @@ public class Exercises {
         this.workout = workout;
     }
 
+
+    public Integer getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Integer weight) {
+        this.weight = weight;
+    }
+
     @Override
     public String toString() {
         return "Exercises{" +
@@ -96,7 +109,9 @@ public class Exercises {
                 ", sets=" + sets +
                 ", reps=" + reps +
                 ", isWorkoutFinished=" + isWorkoutFinished +
+                ", weight=" + weight +
                 ", workout=" + workout +
                 '}';
     }
+
 }

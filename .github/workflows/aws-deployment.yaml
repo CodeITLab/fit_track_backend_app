@@ -23,9 +23,9 @@ jobs:
       - name: Login To Dockerhub
         run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
       - name: Build Docker Image
-        run: docker build -t fitandtrack/fitandtrackapp .
+        run: docker build -t kfistrek/fitandtrackapp .
       - name: Publish Image To Dockerhub
-        run: docker push fitandtrack/fitandtrackapp:latest
+        run: docker push kfistrek/fitandtrackapp:latest
 
   deploy:
     needs: build
@@ -33,8 +33,8 @@ jobs:
       - aws-ec2
     steps:
       - name: Pull The Image From Dockerhub
-        run: docker pull fitandtrack/fitandtrackapp:latest
+        run: docker pull kfistrek/fitandtrackapp:latest
       - name: Delete Old Containers
         run: docker rm -f fit-and-track-app-container
       - name: Run Docker Container
-        run: docker run -d -p 8080:8080 --name fit-and-track-app-container fitandtrack/fitandtrackapp
+        run: docker run -d -p 8080:8080 --name fit-and-track-app-container kfistrek/fitandtrackapp

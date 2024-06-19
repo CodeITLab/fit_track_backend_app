@@ -32,8 +32,8 @@ jobs:
     runs-on: [aws-ec2]
     steps:
       - name: Pull The Image From Dockerhub
-        run: docker pull kfistrek/fitandtrackapp:latest
+        run: sudo docker pull kfistrek/fitandtrackapp:latest
       - name: Delete Old Containers
-        run: docker rm -f fit-and-track-app-container
+        run: sudo docker rm -f fit-and-track-app-container
       - name: Run Docker Container
-        run: docker run -d -p 8080:8080 --name fit-and-track-app-container kfistrek/fitandtrackapp
+        run: sudo docker run -d -p 8080:8080 --name fit-and-track-app-container kfistrek/fitandtrackapp

@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>codeit.lab</groupId>
 	<artifactId>fit-track</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>fit-track</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>

@@ -29,8 +29,7 @@ jobs:
 
   deploy:
     needs: build
-    runs-on:
-      - aws-ec2
+    runs-on: [aws-ec2]
     steps:
       - name: Pull The Image From Dockerhub
         run: docker pull kfistrek/fitandtrackapp:latest

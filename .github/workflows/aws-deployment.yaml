@@ -22,7 +22,7 @@ jobs:
       - name: Login To Dockerhub
         run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
       - name: Build Docker Image
-        run: docker build -t fitAndTrack/fitAndTrackApp
+        run: docker build -t fitAndTrack/fitAndTrackApp .
       - name: Publish Image To Dockerhub
         run: docker push fitAndTrack/fitAndTrackApp:latest
 

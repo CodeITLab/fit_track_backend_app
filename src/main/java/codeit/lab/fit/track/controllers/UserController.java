@@ -1,6 +1,8 @@
 package codeit.lab.fit.track.controllers;
 
+import codeit.lab.fit.track.models.Notifications;
 import codeit.lab.fit.track.models.User;
+import codeit.lab.fit.track.services.NotificationsService;
 import codeit.lab.fit.track.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

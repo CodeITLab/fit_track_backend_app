@@ -1,5 +1,6 @@
 package codeit.lab.fit.track.services;
 
+import codeit.lab.fit.track.models.Notifications;
 import codeit.lab.fit.track.models.User;
 import codeit.lab.fit.track.repositories.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -8,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,6 +18,9 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private NotificationsService notificationsService;
 
     public List<User> findAllUsers() {
         return userRepository.findAll();
@@ -35,7 +40,14 @@ public class UserService {
     }
 
     public ResponseEntity<Long> saveUser(User user) {
-        if (userRepository.findByEmail(user.getEmail()) != null) {
+        if (userRepository.findByEmail(user.getEmail()) != null && user.getPassword().isBlank() || user.getPassword().isEmpty()) {
+            List<Notifications> notifications = new ArrayList<Notifications>();
+            Notifications notifications1 = new Notifications();
+            notifications1.setFlag("aala");
+            notifications1.setBody("aaaaaaaaaa");
+            notifications1.setTitle("iiiiiiiii");
+            notifications.add(notifications1);
+            user.setNotifications(notifications);
             User loggedInUser = userRepository.findByEmail(user.getEmail());
             return new ResponseEntity<>(loggedInUser.getId(), HttpStatus.OK);
         } else {

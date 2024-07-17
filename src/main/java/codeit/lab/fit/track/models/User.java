@@ -1,6 +1,9 @@
 package codeit.lab.fit.track.models;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -27,11 +30,18 @@ public class User {
     @Column(name = "user_type")
     private String userType;
 
+    @Column(name = "password")
+    private String password;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private List<Notifications> notifications = new ArrayList<Notifications>();
+
     public User() {
 
     }
 
-    public User(long id, String name, String lastName, String email, String picture, String isAuth, String userType) {
+    public User(long id, String name, String lastName, String email, String picture, String isAuth, String userType, String password, List<Notifications> notifications) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
@@ -39,6 +49,8 @@ public class User {
         this.picture = picture;
         this.isAuth = isAuth;
         this.userType = userType;
+        this.password = password;
+        this.notifications = notifications;
     }
 
     public long getId() {
@@ -97,6 +109,23 @@ public class User {
         this.isAuth = isAuth;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+
+    public List<Notifications> getNotifications() {
+        return notifications;
+    }
+
+    public void setNotifications(List<Notifications> notifications) {
+        this.notifications = notifications;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -107,6 +136,8 @@ public class User {
                 ", picture='" + picture + '\'' +
                 ", isAuth='" + isAuth + '\'' +
                 ", userType='" + userType + '\'' +
+                ", password='" + password + '\'' +
+                ", notifications: " + notifications + '\'' +
                 '}';
     }
 

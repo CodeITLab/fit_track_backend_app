@@ -42,6 +42,7 @@ public class WorkoutController {
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("save-workout-data")
     public ResponseEntity<String> saveWorkoutData(@RequestBody Workout workout) {
+        System.out.println(workout);
         return workoutService.saveWorkout(workout);
     }
 

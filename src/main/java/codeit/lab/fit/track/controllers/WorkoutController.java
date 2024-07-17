@@ -48,6 +48,7 @@ public class WorkoutController {
 
     @PutMapping("update-user-workout")
     public ResponseEntity<String> updateUserWorkout(@RequestParam Long id, @RequestBody Workout workout) {
+        System.out.println(workout);
         return workoutService.updateWorkout(id, workout);
     }
 

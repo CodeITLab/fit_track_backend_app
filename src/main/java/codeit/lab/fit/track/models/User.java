@@ -34,7 +34,7 @@ public class User {
     private String password;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "users_id")
+    @JoinColumn(name = "user_id")
     private List<Notifications> notifications = new ArrayList<Notifications>();
 
     public User() {

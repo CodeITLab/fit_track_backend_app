@@ -65,7 +65,7 @@ public class UserController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("save-user-data")
     public ResponseEntity<Long> saveUserData(@RequestBody User user) {
-        System.out.println(user);
+        System.out.println("Poslani user objekt: " + user);
         return userService.saveUser(user);
     }
 

@@ -34,8 +34,8 @@ public class User {
     private String password;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
-    private List<Notifications> notifications = new ArrayList<Notifications>();
+    @JoinColumn(name = "users_id")
+    private List<Notifications> notificationsData = new ArrayList<Notifications>();
 
     public User() {
 
@@ -50,7 +50,7 @@ public class User {
         this.isAuth = isAuth;
         this.userType = userType;
         this.password = password;
-        this.notifications = notifications;
+        this.notificationsData = notifications;
     }
 
     public long getId() {
@@ -118,12 +118,12 @@ public class User {
     }
 
 
-    public List<Notifications> getNotifications() {
-        return notifications;
+    public List<Notifications> getNotificationsData() {
+        return notificationsData;
     }
 
-    public void setNotifications(List<Notifications> notifications) {
-        this.notifications = notifications;
+    public void setNotificationsData(List<Notifications> notifications) {
+        this.notificationsData = notifications;
     }
 
     @Override
@@ -137,7 +137,7 @@ public class User {
                 ", isAuth='" + isAuth + '\'' +
                 ", userType='" + userType + '\'' +
                 ", password='" + password + '\'' +
-                ", notifications: " + notifications + '\'' +
+                ", notifications: " + notificationsData + '\'' +
                 '}';
     }
 

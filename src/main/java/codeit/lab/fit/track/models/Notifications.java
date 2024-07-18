@@ -14,7 +14,7 @@ public class Notifications {
     @Column
     private String title;
 
-    @Column
+    @Column(length = 2048)
     private String body;
 
     @Column

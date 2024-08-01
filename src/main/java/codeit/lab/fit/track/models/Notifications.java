@@ -12,13 +12,13 @@ public class Notifications {
     private long id;
 
     @Column
-    private String title;
+    private String notificationsTitle;
 
     @Column(length = 2048)
-    private String body;
+    private String notificationsDescriptions;
 
     @Column
-    private String flag;
+    private String notificationsCategory;
 
     @ManyToOne
     @JsonIgnore
@@ -26,11 +26,11 @@ public class Notifications {
 
     public Notifications() {}
 
-    public Notifications(long id, String title, String body, String flag, User user) {
+    public Notifications(long id, String notificationsTitle, String notificationsDescriptions, String notificationsCategory, User user) {
         this.id = id;
-        this.title = title;
-        this.body = body;
-        this.flag = flag;
+        this.notificationsTitle = notificationsTitle;
+        this.notificationsDescriptions = notificationsDescriptions;
+        this.notificationsCategory = notificationsCategory;
         this.user = user;
     }
 
@@ -42,28 +42,28 @@ public class Notifications {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getNotificationsTitle() {
+        return notificationsTitle;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setNotificationsTitle(String title) {
+        this.notificationsTitle = title;
     }
 
-    public String getBody() {
-        return body;
+    public String getNotificationsDescriptions() {
+        return notificationsDescriptions;
     }
 
-    public void setBody(String body) {
-        this.body = body;
+    public void setNotificationsDescriptions(String body) {
+        this.notificationsDescriptions = body;
     }
 
-    public String getFlag() {
-        return flag;
+    public String getNotificationsCategory() {
+        return notificationsCategory;
     }
 
-    public void setFlag(String flag) {
-        this.flag = flag;
+    public void setNotificationsCategory(String flag) {
+        this.notificationsCategory = flag;
     }
 
 
@@ -79,9 +79,9 @@ public class Notifications {
     public String toString() {
         return "Notifications{" +
                 "id=" + id +
-                ", title='" + title + '\'' +
-                ", body='" + body + '\'' +
-                ", flag='" + flag + '\'' +
+                ", title='" + notificationsTitle + '\'' +
+                ", body='" + notificationsDescriptions + '\'' +
+                ", flag='" + notificationsCategory + '\'' +
                 ", user='" + user + '\'' +
                 '}';
     }

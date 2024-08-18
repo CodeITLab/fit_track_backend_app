@@ -7,25 +7,25 @@ import jakarta.persistence.*;
 @Table(name = "notifications")
 public class Notifications {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+        @Id
+        @GeneratedValue(strategy = GenerationType.AUTO)
+        private long id;
 
-    @Column
-    private String notificationTitle;
+        @Column
+        private String notificationTitle;
 
-    @Column(length = 2048)
-    private String notificationBody;
+        @Column(length = 2048)
+        private String notificationBody;
 
-    @Column
-    private String notificationCategory;
+        @Column
+        private String notificationCategory;
 
-    @Column
-    private boolean isNotificationSeen;
+        @Column
+        private boolean isNotificationSeen;
 
-    @ManyToOne
-    @JsonIgnore
-    private User user;
+        @ManyToOne
+        @JsonIgnore
+        private User user;
 
     public Notifications() {}
 

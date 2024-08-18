@@ -19,9 +19,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private NotificationsService notificationsService;
-
     @GetMapping("get-all-users")
     public ResponseEntity<List<User>> getAllUsers() {
         try {

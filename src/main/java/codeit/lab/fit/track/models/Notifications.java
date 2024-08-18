@@ -12,13 +12,16 @@ public class Notifications {
     private long id;
 
     @Column
-    private String title;
+    private String notificationTitle;
 
     @Column(length = 2048)
-    private String body;
+    private String notificationBody;
 
     @Column
-    private String flag;
+    private String notificationCategory;
+
+    @Column
+    private boolean isNotificationSeen;
 
     @ManyToOne
     @JsonIgnore
@@ -26,11 +29,12 @@ public class Notifications {
 
     public Notifications() {}
 
-    public Notifications(long id, String title, String body, String flag, User user) {
+    public Notifications(long id, String notificationTitle, String notificationBody, String notificationCategory, boolean isNotificationSeen, User user) {
         this.id = id;
-        this.title = title;
-        this.body = body;
-        this.flag = flag;
+        this.notificationTitle = notificationTitle;
+        this.notificationBody = notificationBody;
+        this.notificationCategory = notificationCategory;
+        this.isNotificationSeen = isNotificationSeen;
         this.user = user;
     }
 
@@ -42,28 +46,28 @@ public class Notifications {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getNotificationTitle() {
+        return notificationTitle;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setNotificationTitle(String title) {
+        this.notificationTitle = title;
     }
 
-    public String getBody() {
-        return body;
+    public String getNotificationBody() {
+        return notificationBody;
     }
 
-    public void setBody(String body) {
-        this.body = body;
+    public void setNotificationBody(String body) {
+        this.notificationBody = body;
     }
 
-    public String getFlag() {
-        return flag;
+    public String getNotificationCategory() {
+        return notificationCategory;
     }
 
-    public void setFlag(String flag) {
-        this.flag = flag;
+    public void setNotificationCategory(String flag) {
+        this.notificationCategory = flag;
     }
 
 
@@ -75,14 +79,24 @@ public class Notifications {
         this.user = user;
     }
 
+
+    public boolean getNotificationSeen() {
+        return isNotificationSeen;
+    }
+
+    public void setNotificationSeen(boolean notificationSeen) {
+        isNotificationSeen = notificationSeen;
+    }
+
     @Override
     public String toString() {
         return "Notifications{" +
                 "id=" + id +
-                ", title='" + title + '\'' +
-                ", body='" + body + '\'' +
-                ", flag='" + flag + '\'' +
-                ", user='" + user + '\'' +
+                ", notificationTitle='" + notificationTitle + '\'' +
+                ", notificationBody='" + notificationBody + '\'' +
+                ", notificationCategory='" + notificationCategory + '\'' +
+                ", isNotificationSeen=" + isNotificationSeen +
+                ", user=" + user +
                 '}';
     }
 }
